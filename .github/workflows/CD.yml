@@ -1,0 +1,30 @@
+name: Build & Upload APK
+
+on:
+  release:
+      types: [published]
+   
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: CheckOut Code
+      uses: actions/checkout@v4
+      
+    - name: set up JDK 1.8
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'oracle'
+        java-version: 1.8
+        
+    - name: Make Gradle executable
+      run: chmod +x ./gradlew
+      
+    - name: Build APK
+      run: ./gradlew build
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: app-debug.apk
+        path: ./app/build/outputs/apk/debug/app-debug.apk
