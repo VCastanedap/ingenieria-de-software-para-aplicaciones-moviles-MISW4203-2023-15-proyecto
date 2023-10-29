@@ -71,10 +71,10 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
 
-// Test Logging
 tasks.withType<Test> {
     testLogging {
         events(
+            TestLogEvent.STARTED,
             TestLogEvent.FAILED,
             TestLogEvent.PASSED,
             TestLogEvent.SKIPPED,
@@ -83,5 +83,17 @@ tasks.withType<Test> {
         )
         exceptionFormat = TestExceptionFormat.FULL
         showStandardStreams = true; showCauses = true; showExceptions = true; showStackTraces = true
+        debug {
+            events(
+                TestLogEvent.STARTED,
+                TestLogEvent.FAILED,
+                TestLogEvent.PASSED,
+                TestLogEvent.SKIPPED,
+                TestLogEvent.STANDARD_ERROR,
+                TestLogEvent.STANDARD_OUT
+            )
+            exceptionFormat = TestExceptionFormat.FULL
+            showStandardStreams = true; showCauses = true; showExceptions = true; showStackTraces = true
+        }
     }
 }
