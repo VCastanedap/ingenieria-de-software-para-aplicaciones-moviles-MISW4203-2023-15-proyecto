@@ -12,16 +12,7 @@
         android:layout_width="411dp"
         android:layout_height="216dp"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:layout_editor_absoluteX="124dp"
-            tools:layout_editor_absoluteY="66dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        tools:layout_editor_absoluteX="0dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -31,13 +22,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
+        <!-- Auto layout, variables, and unit scale are not yet supported -->
+        <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="1dp">
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -46,48 +45,254 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageButton
-                android:id="@+id/btn_album"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+
+            <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+            <RelativeLayout
+                android:id="@+id/minicard1"
+                android:layout_width="96dp"
+                android:layout_height="132dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="@color/transparente"
-                android:scaleType="fitStart"
-                app:srcCompat="@drawable/img_album" />
+                android:gravity="center_horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/minicardVinilos"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="36dp"
+                    android:background="@drawable/minicard"
+                    android:gravity="center">
+
+                    <!-- Auto layout, variables, and unit scale are not yet supported -->
+                    <View
+                        android:id="@+id/vector"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginRight="18dp"
+                        android:layout_marginBottom="18dp"
+                        android:background="@drawable/cd"
+                        android:gravity="center" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txtVinilos"
+                    android:layout_width="56dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="104dp"
+
+                    android:gravity="center_horizontal"
+                    android:text="@string/btn_Vinilos"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+            </RelativeLayout>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
+
+
+
+
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageButton
-                android:id="@+id/btn_artista"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+            <RelativeLayout
+                android:id="@+id/minicard2"
+                android:layout_width="96dp"
+                android:layout_height="132dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="@color/transparente"
-                android:scaleType="fitStart"
-                app:srcCompat="@drawable/img_album" />
+                android:gravity="center_horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/minicardArtista"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="36dp"
+                    android:background="@drawable/minicard"
+                    android:gravity="center">
+
+                    <!-- Auto layout, variables, and unit scale are not yet supported -->
+                    <View
+                        android:id="@+id/vector2"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginRight="18dp"
+                        android:layout_marginBottom="18dp"
+                        android:background="@drawable/zondicons_artist"
+                        android:gravity="center" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txtArtista"
+                    android:layout_width="56dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+
+                    android:layout_marginTop="104dp"
+
+
+                    android:gravity="center_horizontal"
+                    android:text="@string/btn_Artista"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+            </RelativeLayout>
+
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
+
+
+
+
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageButton
-                android:id="@+id/btn_colleccionista"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparente"
-                android:scaleType="fitStart"
-                app:srcCompat="@drawable/img_album" />
+            <!-- Auto layout, variables, and unit scale are not yet supported -->
 
+
+            <RelativeLayout
+                android:id="@+id/minicard3"
+                android:layout_width="96dp"
+                android:layout_height="132dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/transparente"
+                android:gravity="center_horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/minicardCollecionista"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="36dp"
+                    android:background="@drawable/minicard"
+                    android:gravity="center">
+
+                    <!-- Auto layout, variables, and unit scale are not yet supported -->
+                    <View
+                        android:id="@+id/vector3"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginRight="18dp"
+                        android:layout_marginBottom="18dp"
+                        android:background="@drawable/cdcoleccionista"
+                        android:gravity="center" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/albumes"
+                    android:layout_width="56dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="104dp"
+
+                    android:gravity="center_horizontal"
+                    android:text="@string/btn_Colleccionista"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+            </RelativeLayout>
+            <![CDATA[
+
+            />
+
+        ]]>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="399dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"></LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

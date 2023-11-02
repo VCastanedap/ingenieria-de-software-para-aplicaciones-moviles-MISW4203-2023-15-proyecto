@@ -13,6 +13,15 @@
         android:theme="@style/Theme.AppCompat"
         tools:targetApi="34">
         <activity
+            android:name=".colleccionistaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".artistaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VinilosActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListMusicians"
             android:exported="false" />
         <activity
