@@ -32,3 +32,7 @@ cd ingenieria-de-software-para-aplicaciones-moviles-MISW4203-2023-15-proyecto
 
 - Java 1.8 (JDK)
 - JAVA_HOME configurado
+
+## Entrega del artefacto (apk)
+
+[APK primer sprint](https://github.com/VCastanedap/ingenieria-de-software-para-aplicaciones-moviles-MISW4203-2023-15-proyecto/actions/runs/6766657620)
