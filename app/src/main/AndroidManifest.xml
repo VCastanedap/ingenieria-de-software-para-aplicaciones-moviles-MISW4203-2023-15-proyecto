@@ -16,6 +16,9 @@
             android:name=".colleccionistaActivity"
             android:exported="false" />
         <activity
+            android:name=".ListArtistasActivity"
+            android:exported="false" />
+        <activity
             android:name=".artistaActivity"
             android:exported="false" />
         <activity

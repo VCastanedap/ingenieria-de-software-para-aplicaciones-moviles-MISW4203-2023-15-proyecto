@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         //listener btn_Artista
         val minicard2 = findViewById<RelativeLayout>(R.id.minicard2)
         minicard2.setOnClickListener {
-            val intent = Intent(this, artistaActivity::class.java)
+            val intent = Intent(this, ListArtistasActivity::class.java)
             startActivity(intent)
         }
 

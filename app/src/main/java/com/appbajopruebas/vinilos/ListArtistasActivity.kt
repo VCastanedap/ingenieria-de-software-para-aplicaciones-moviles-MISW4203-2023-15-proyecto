@@ -1,18 +1,17 @@
 package com.appbajopruebas.vinilos
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-
-class artistaActivity : AppCompatActivity() {
+import androidx.appcompat.app.AppCompatActivity
+class ListArtistasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_artista)
+        setContentView(R.layout.activity_list_artistas)
         // Habilita el botón de retroceso en la barra de acción
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Detalle Artista"
+        supportActionBar?.title = "Lista Artista"
     }
-    // Esta función se llama cuando se presiona el botón de retroceso en la barra de acción
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {

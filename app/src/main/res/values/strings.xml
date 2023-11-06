@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Vinilos</string>
     <string name="btn_Vinilos">Vinilos</string>
+    <string name="btn_Artistas">Artistas</string>
     <string name="btn_Artista">Artista</string>
     <string name="btn_Colleccionista">Colleccion</string>
 </resources>
