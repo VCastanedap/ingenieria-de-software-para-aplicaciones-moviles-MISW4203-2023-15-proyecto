@@ -1,0 +1,65 @@
+[33mcommit 25bf35c0f4ee82dcfa4bb3cb66576d6ac489b416[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Edwin Tijaro <e.tijaro@uniandes.edu.co>
+Date:   Wed Nov 1 01:02:43 2023 -0500
+
+    en desarrollo del home
+
+[33mcommit 16db90ff48d12c501a5a814d0df3e2a417bf8937[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 3411af6 30080c1
+Author: Juan Manuel González Garzón <jm.gonzalez1844@uniandes.edu.co>
+Date:   Sun Oct 29 10:54:10 2023 -0500
+
+    Merge pull request #53 from juanmanuelgg/feature/listar-artistas/task/construir-la-vista-utilizando-xml
+    
+    Mas código para la aplicación base
+
+[33mcommit 30080c137bfbd2ba2a34960b1abaaba49a9bac81[m
+Author: Juan Manuel González Garzón <jm.gonzalez1844@uniandes.edu.co>
+Date:   Sun Oct 29 10:51:41 2023 -0500
+
+    README con instrucciones y workflow CI para ejecucion de pruebas.
+
+[33mcommit 25d6cfeb5ea25067323dfe19329498eecf01f5af[m
+Author: Juan Manuel González Garzón <jm.gonzalez1844@uniandes.edu.co>
+Date:   Sun Oct 29 03:46:06 2023 -0500
+
+    ver los logs de los test.
+
+[33mcommit a9c3fc20c44c7513764ea7d7176ba3e57cfa73f8[m
+Author: Juan Manuel González Garzón <jm.gonzalez1844@uniandes.edu.co>
+Date:   Sun Oct 29 02:15:48 2023 -0500
+
+    Incluir pipeline para generar el apk a entregar y poner 2 basicEmptyActivities.
+
+[33mcommit ad5b7090ae6c0447a1df4594e9ddd584ccee726c[m
+Author: Juan Manuel González Garzón <jm.gonzalez1844@uniandes.edu.co>
+Date:   Sat Oct 28 00:01:26 2023 -0500
+
+    Hacer que lolipop sea el min sdk de la app.
+
+[33mcommit 3411af6774e3d9012335fce1ba092f029f37da55[m
+Merge: 9b7e1ff 710382e
+Author: Juan Manuel González Garzón <jm.gonzalez1844@uniandes.edu.co>
+Date:   Mon Oct 23 21:16:42 2023 -0500
+
+    Merge pull request #52 from juanmanuelgg/feature/listar-artistas/task/construir-la-vista-utilizando-xml
+    
+    Primer commit, app base
+
+[33mcommit 710382e24fc299e4c77d5ac79370b35a04e637a4[m
+Author: Juan Manuel González Garzón <jm.gonzalez1844@uniandes.edu.co>
+Date:   Mon Oct 23 21:15:31 2023 -0500
+
+    Primer commit
+
+[33mcommit 9b7e1ff88ea678d0a5b56b9f1c90b7cd98308b86[m
+Author: VCastanedap <v.castanedap@uniandes.edu.co>
+Date:   Mon Oct 16 22:30:37 2023 -0500
+
+    Update README.md
+
+[33mcommit 86c74559c16a32b74d9ce0898683ee871a69e8e7[m
+Author: VCastanedap <v.castanedap@uniandes.edu.co>
+Date:   Sun Oct 15 22:36:59 2023 -0500
+
+    Initial commit
