@@ -57,4 +57,4 @@ Header que se debe poner en las peticiones
 
 > Nota: YXBwdXNlcjpxdWVwYXNzd29yZHRhbnNlZ3VyYQ== es la codificación Base64 de appuser:quepasswordtansegura
 
-> UPDATE: 2023-11-07 Se retira la Basic Authorization del api para facilitar los llamados al API. 
+> UPDATE: 2023-11-07 Se retira la Basic Authorization de Nginx para facilitar los llamados al API. 
