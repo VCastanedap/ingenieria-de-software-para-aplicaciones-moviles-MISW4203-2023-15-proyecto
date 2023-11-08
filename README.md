@@ -56,3 +56,5 @@ Header que se debe poner en las peticiones
 - Value: Basic YXBwdXNlcjpxdWVwYXNzd29yZHRhbnNlZ3VyYQ==
 
 > Nota: YXBwdXNlcjpxdWVwYXNzd29yZHRhbnNlZ3VyYQ== es la codificación Base64 de appuser:quepasswordtansegura
+
+> UPDATE: 2023-11-07 Se retira la Basic Authorization del api para facilitar los llamados al API. 
