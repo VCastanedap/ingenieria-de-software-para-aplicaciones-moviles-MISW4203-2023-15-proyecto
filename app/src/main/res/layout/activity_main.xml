@@ -264,14 +264,24 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="399dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="1dp"
+            android:layout_width="384dp"
+            android:layout_height="181dp"
+            android:layout_marginTop="36dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            tools:ignore="UselessLeaf" />
+            tools:ignore="UselessLeaf">
+
+            <TextView
+                android:id="@+id/get_result_text"
+                android:layout_width="278dp"
+                android:layout_height="186dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/app_name"
+                android:textSize="30sp" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
