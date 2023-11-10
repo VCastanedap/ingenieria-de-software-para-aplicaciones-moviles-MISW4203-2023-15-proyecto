@@ -1,17 +1,21 @@
-package viewmodels
+package com.appbajopruebas.vinilos.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.*
-import models.Collector
-import network.NetworkServiceAdapter
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.appbajopruebas.vinilos.models.Album
+import com.appbajopruebas.vinilos.network.NetworkServiceAdapter
 
 
-class CollectorViewModel(application: Application) :  AndroidViewModel(application) {
+class AlbumViewModel (application: Application) :  AndroidViewModel(application) {
 
-    private val _collectors = MutableLiveData<List<Collector>>()
+    private val _albums = MutableLiveData<List<Album>>()
 
-    val collectors: LiveData<List<Collector>>
-        get() = _collectors
+    val albums: LiveData<List<Album>>
+        get() = _albums
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -28,8 +32,8 @@ class CollectorViewModel(application: Application) :  AndroidViewModel(applicati
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getCollectors({
-            _collectors.postValue(it)
+        NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
+            _albums.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
@@ -42,10 +46,10 @@ class CollectorViewModel(application: Application) :  AndroidViewModel(applicati
     }
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(CollectorViewModel::class.java)) {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(AlbumViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return CollectorViewModel(app) as T
+                return AlbumViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

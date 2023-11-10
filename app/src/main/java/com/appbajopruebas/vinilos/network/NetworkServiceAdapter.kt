@@ -1,4 +1,4 @@
-package network
+package com.appbajopruebas.vinilos.network
 import android.content.Context
 import android.util.Log
 import com.android.volley.Request
@@ -8,9 +8,9 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import models.Album
-import models.Collector
-import models.Comment
+import com.appbajopruebas.vinilos.models.Album
+import com.appbajopruebas.vinilos.models.Collector
+import com.appbajopruebas.vinilos.models.Comment
 
 import org.json.JSONArray
 import org.json.JSONObject
@@ -90,12 +90,12 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
-        return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
+        return StringRequest(Request.Method.GET, BASE_URL +path, responseListener,errorListener)
     }
     private fun postRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
-        return  JsonObjectRequest(Request.Method.POST, BASE_URL+path, body, responseListener, errorListener)
+        return  JsonObjectRequest(Request.Method.POST, BASE_URL +path, body, responseListener, errorListener)
     }
     private fun putRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
-        return  JsonObjectRequest(Request.Method.PUT, BASE_URL+path, body, responseListener, errorListener)
+        return  JsonObjectRequest(Request.Method.PUT, BASE_URL +path, body, responseListener, errorListener)
     }
 }

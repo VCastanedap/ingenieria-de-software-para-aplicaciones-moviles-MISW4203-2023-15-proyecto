@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="album" type="models.Album"/>
+        <variable name="album" type="com.appbajopruebas.vinilos.models.Album"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@color/stroke_color"
+            app:strokeColor="@color/black"
             app:strokeWidth="1dp">
 
             <LinearLayout

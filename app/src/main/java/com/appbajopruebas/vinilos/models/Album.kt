@@ -1,4 +1,4 @@
-package models
+package com.appbajopruebas.vinilos.models
 
 data class Album (
     val albumId:Int,

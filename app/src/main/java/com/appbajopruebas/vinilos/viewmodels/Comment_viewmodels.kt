@@ -1,21 +1,17 @@
-package viewmodels
+package com.appbajopruebas.vinilos.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import models.Album
-import network.NetworkServiceAdapter
+import androidx.lifecycle.*
+import com.appbajopruebas.vinilos.models.Comment
+import com.appbajopruebas.vinilos.network.NetworkServiceAdapter
 
 
-class AlbumViewModel (application: Application) :  AndroidViewModel(application) {
+class CommentViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
 
-    private val _albums = MutableLiveData<List<Album>>()
+    private val _comments = MutableLiveData<List<Comment>>()
 
-    val albums: LiveData<List<Album>>
-        get() = _albums
+    val comments: LiveData<List<Comment>>
+        get() = _comments
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -27,13 +23,15 @@ class AlbumViewModel (application: Application) :  AndroidViewModel(application)
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
+    val id:Int = albumId
+
     init {
         refreshDataFromNetwork()
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
-            _albums.postValue(it)
+        NetworkServiceAdapter.getInstance(getApplication()).getComments(id, {
+            _comments.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
@@ -45,11 +43,11 @@ class AlbumViewModel (application: Application) :  AndroidViewModel(application)
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application) : ViewModelProvider.Factory {
+    class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(AlbumViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(CommentViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return AlbumViewModel(app) as T
+                return CommentViewModel(app, albumId) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

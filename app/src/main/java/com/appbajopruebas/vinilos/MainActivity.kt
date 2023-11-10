@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         volleyBroker = VolleyBroker(this.applicationContext)
 
+
+
+
+
+
         //listener btn_Vinilos
         val minicard1 = findViewById<RelativeLayout>(R.id.minicard1)
         val getResultTextView : TextView = findViewById(R.id.get_result_text)

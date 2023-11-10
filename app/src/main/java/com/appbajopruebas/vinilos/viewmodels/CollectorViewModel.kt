@@ -1,17 +1,17 @@
-package viewmodels
+package com.appbajopruebas.vinilos.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.*
-import models.Comment
-import network.NetworkServiceAdapter
+import com.appbajopruebas.vinilos.models.Collector
+import com.appbajopruebas.vinilos.network.NetworkServiceAdapter
 
 
-class CommentViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
+class CollectorViewModel(application: Application) :  AndroidViewModel(application) {
 
-    private val _comments = MutableLiveData<List<Comment>>()
+    private val _collectors = MutableLiveData<List<Collector>>()
 
-    val comments: LiveData<List<Comment>>
-        get() = _comments
+    val collectors: LiveData<List<Collector>>
+        get() = _collectors
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -23,15 +23,13 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    val id:Int = albumId
-
     init {
         refreshDataFromNetwork()
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getComments(id, {
-            _comments.postValue(it)
+        NetworkServiceAdapter.getInstance(getApplication()).getCollectors({
+            _collectors.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
@@ -43,11 +41,11 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(CommentViewModel::class.java)) {
+    class Factory(val app: Application) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(CollectorViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return CommentViewModel(app, albumId) as T
+                return CollectorViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
