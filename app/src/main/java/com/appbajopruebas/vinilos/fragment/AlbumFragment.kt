@@ -1,6 +1,7 @@
 package com.appbajopruebas.vinilos.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,16 +12,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.appbajopruebas.vinilos.R
-import com.appbajopruebas.vinilos.databinding.AlbumFragmentBinding
+import com.appbajopruebas.vinilos.databinding.FragmentAlbumBinding
 import com.appbajopruebas.vinilos.models.Album
 import com.appbajopruebas.vinilos.viewmodels.AlbumViewModel
-import com.example.vinyls_jetpack_application.ui.adapters.AlbumsAdapter
+import com.appbajopruebas.vinilos.ui.adapters.AlbumsAdapter
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class AlbumFragment : Fragment() {
-    private var _binding: AlbumFragmentBinding? = null
+    private var _binding: FragmentAlbumBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: AlbumViewModel
@@ -30,7 +31,7 @@ class AlbumFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = AlbumFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentAlbumBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = AlbumsAdapter()
         return view

@@ -1,5 +1,6 @@
-package com.example.vinyls_jetpack_application.ui.adapters
+package com.appbajopruebas.vinilos.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -9,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.appbajopruebas.vinilos.R
 import com.appbajopruebas.vinilos.databinding.AlbumItemBinding
 import com.appbajopruebas.vinilos.models.Album
-import com.appbajopruebas.vinilos.fragment.AlbumFragment
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
 
@@ -25,6 +25,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             AlbumViewHolder.LAYOUT,
             parent,
             false)
+        Log.d("AlbumsAdapter", "se crea? on ")
         return AlbumViewHolder(withDataBinding)
     }
 
@@ -33,9 +34,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             it.album = albums[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
-            val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
-            // Navigate using that action|z
-            holder.viewDataBinding.root.findNavController().navigate(action)
+            Log.d("AlbumsAdapter", "Clicked on ${albums[position].name}")
         }
     }
 

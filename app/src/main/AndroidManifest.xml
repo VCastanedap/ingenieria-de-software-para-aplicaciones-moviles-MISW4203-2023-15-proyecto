@@ -14,9 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         tools:targetApi="34">
-        <activity
-            android:name=".album_item"
-            android:exported="false" />
+
         <activity
             android:name=".colleccionistaActivity"
             android:exported="false" />

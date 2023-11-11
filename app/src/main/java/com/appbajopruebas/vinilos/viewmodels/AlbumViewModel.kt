@@ -10,7 +10,7 @@ import com.appbajopruebas.vinilos.models.Album
 import com.appbajopruebas.vinilos.network.NetworkServiceAdapter
 
 
-class AlbumViewModel (application: Application) :  AndroidViewModel(application) {
+class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
 
     private val _albums = MutableLiveData<List<Album>>()
 

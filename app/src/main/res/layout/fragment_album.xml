@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.Album_fragment"
+    tools:context=".fragment.AlbumFragment"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp">
 
@@ -17,6 +17,7 @@
         android:id="@+id/albumsRv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         tools:listitem="@layout/album_item"/>
 
 </FrameLayout>
