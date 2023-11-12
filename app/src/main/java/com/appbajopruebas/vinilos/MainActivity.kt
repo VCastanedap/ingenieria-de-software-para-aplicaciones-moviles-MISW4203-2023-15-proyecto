@@ -41,9 +41,11 @@ class MainActivity : AppCompatActivity() {
         //listener btn_Vinilos
         val minicard1 = findViewById<RelativeLayout>(R.id.minicard1)
         val getResultTextView : TextView = findViewById(R.id.get_result_text)
+
         minicard1.setOnClickListener {
             val intent = Intent(this, VinilosActivity::class.java)
             startActivity(intent)
+
 
         /*
             volleyBroker.instance.add(VolleyBroker.getRequest("collectors",

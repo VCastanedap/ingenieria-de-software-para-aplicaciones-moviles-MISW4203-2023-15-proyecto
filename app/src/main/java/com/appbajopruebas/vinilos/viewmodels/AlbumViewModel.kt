@@ -1,11 +1,13 @@
 package com.appbajopruebas.vinilos.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.CreationExtras
 import com.appbajopruebas.vinilos.models.Album
 import com.appbajopruebas.vinilos.network.NetworkServiceAdapter
 
@@ -28,12 +30,14 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
         get() = _isNetworkErrorShown
 
     init {
+        Log.d("***ViewModel","creo el viewmodel" )
         refreshDataFromNetwork()
     }
 
     private fun refreshDataFromNetwork() {
         NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
             _albums.postValue(it)
+            Log.d("AlbumViewModel", "Datos obtenidos: $it") // Añade esta línea
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
@@ -46,9 +50,10 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
     }
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
             if (modelClass.isAssignableFrom(AlbumViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
+                Log.d("***ViewModel","funcion rara " )
                 return AlbumViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")

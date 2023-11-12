@@ -16,8 +16,10 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
     var albums :List<Album> = emptyList()
         set(value) {
             field = value
+            Log.d("*** adapater","albums " )
             notifyDataSetChanged()
         }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
         val withDataBinding: AlbumItemBinding = DataBindingUtil.inflate(
@@ -25,7 +27,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             AlbumViewHolder.LAYOUT,
             parent,
             false)
-        Log.d("AlbumsAdapter", "se crea? on ")
+        Log.d("AlbumsAdapter", "se crea? on "+ parent.context.toString() )
         return AlbumViewHolder(withDataBinding)
     }
 
@@ -39,6 +41,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
     }
 
     override fun getItemCount(): Int {
+        Log.d("*** getItemCount", albums.size.toString() )
         return albums.size
     }
 
