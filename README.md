@@ -35,7 +35,8 @@ cd ingenieria-de-software-para-aplicaciones-moviles-MISW4203-2023-15-proyecto
 
 ## Entrega del artefacto (apk)
 
-[APK primer sprint](https://github.com/VCastanedap/ingenieria-de-software-para-aplicaciones-moviles-MISW4203-2023-15-proyecto/actions/runs/6766657620)
+- [APK primer sprint](https://github.com/VCastanedap/ingenieria-de-software-para-aplicaciones-moviles-MISW4203-2023-15-proyecto/actions/runs/6766657620)
+- [APK avance del segundo sprint](https://github.com/VCastanedap/ingenieria-de-software-para-aplicaciones-moviles-MISW4203-2023-15-proyecto/actions/runs/6845799822)
 
 ## Notas sobre el Back que desplegamos
 
