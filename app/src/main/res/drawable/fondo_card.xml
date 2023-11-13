@@ -1,0 +1,46 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Sombra -->
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#94777DB1"
+                android:centerColor="#C9B9BDE2"
+                android:endColor="#A8E4E6FF"
+
+                android:type="radial"
+                android:gradientRadius="90%"
+                android:centerX="0.75"
+                android:centerY="0.75"
+                /> <!-- radio del gradiente -->
+            <corners android:radius="15dp" /> <!-- radio de los bordes redondeados -->
+        </shape>
+    </item>
+
+    <!-- Contenido de la tarjeta -->
+    <item
+        android:top="0dp"
+        android:left="0dp"
+        android:bottom="5dp"
+        android:right="5dp">
+        <selector xmlns:android="http://schemas.android.com/apk/res/android">
+            <item>
+                <shape android:shape="rectangle">
+                    <gradient
+                        android:startColor="#777DB1"
+                        android:centerColor="#B9BDE2"
+                        android:endColor="#E4E6FF"
+                        android:type="sweep"
+                        android:gradientRadius="50%p"
+                        android:centerX="0.99"
+                        android:centerY="1" />
+                    <corners android:radius="15dp"/> <!-- radio de los bordes redondeados -->
+                    <padding
+                        android:bottom="15dp"
+                        android:left="15dp"
+                        android:right="15dp"
+                        android:top="15dp"/> <!-- padding alrededor de la tarjeta -->
+                </shape>
+            </item>
+        </selector>
+    </item>
+</layer-list>

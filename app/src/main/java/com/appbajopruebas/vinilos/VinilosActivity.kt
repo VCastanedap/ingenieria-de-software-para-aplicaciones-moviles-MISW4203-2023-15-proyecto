@@ -1,6 +1,7 @@
 package com.appbajopruebas.vinilos
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,13 +19,12 @@ class VinilosActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_vinilos)
+
         // Inicializar el objeto de vinculación
         binding = ActivityVinilosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Resto del código de tu actividad...
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Lista Vinilos"
 
         // Get the navigation host fragment from this Activity
@@ -34,6 +34,20 @@ class VinilosActivity : AppCompatActivity() {
         // Make sure actions in the ActionBar get propagated to the NavController
         val appBarConfiguration = AppBarConfiguration.Builder(navController.graph).build()
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // Habilita el botón de retroceso en la ActionBar
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // Cuando se hace clic en el botón de retroceso, inicia MainActivity
+                startActivity(Intent(this, MainActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

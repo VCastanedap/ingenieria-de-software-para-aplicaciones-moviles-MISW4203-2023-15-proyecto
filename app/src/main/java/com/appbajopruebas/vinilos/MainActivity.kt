@@ -15,22 +15,12 @@ class MainActivity : AppCompatActivity() {
     lateinit var volleyBroker: VolleyBroker
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.layout_menu, menu)
+
         supportActionBar!!.title = "Volley"
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_switch_layout -> {
-                // Create an intent with a destination of the other Activity
-                val intent = Intent(this, colleccionistaActivity::class.java)
-                startActivity(intent)
-                return true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

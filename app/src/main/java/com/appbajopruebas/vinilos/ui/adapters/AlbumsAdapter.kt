@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.appbajopruebas.vinilos.R
 import com.appbajopruebas.vinilos.databinding.AlbumItemBinding
 import com.appbajopruebas.vinilos.models.Album
+import com.bumptech.glide.Glide
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
 
@@ -34,6 +35,10 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         holder.viewDataBinding.also {
             it.album = albums[position]
+            // Cargar la imagen desde la URL
+            Glide.with(holder.itemView.context)
+                .load(albums[position].cover)
+                .into(it.imageViewCard)
         }
         holder.viewDataBinding.root.setOnClickListener {
             Log.d("AlbumsAdapter", "Clicked on ${albums[position].name}")
