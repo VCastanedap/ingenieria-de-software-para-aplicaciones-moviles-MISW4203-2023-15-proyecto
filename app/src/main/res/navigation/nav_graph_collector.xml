@@ -3,12 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/albumFragment">
-    <fragment
-        android:id="@+id/albumFragment"
-        android:name="com.appbajopruebas.vinilos.fragment.AlbumFragment"
-        tools:layout="@layout/fragment_album" >
-    </fragment>
+    app:startDestination="@id/collectorFragment">
 
     <fragment
         android:id="@+id/collectorFragment"

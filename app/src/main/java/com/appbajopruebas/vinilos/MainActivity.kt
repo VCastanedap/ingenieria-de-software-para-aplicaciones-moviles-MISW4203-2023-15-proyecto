@@ -3,13 +3,10 @@ package com.appbajopruebas.vinilos
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.RelativeLayout
 import android.widget.TextView
 import brokers.VolleyBroker
-import com.android.volley.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var volleyBroker: VolleyBroker
@@ -61,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         //listener btn_Collecionista
         val minicard3 = findViewById<RelativeLayout>(R.id.minicard3)
         minicard3.setOnClickListener {
-            val intent = Intent(this, colleccionistaActivity::class.java)
+            val intent = Intent(this, ColleccionistaActivity::class.java)
             startActivity(intent)
         }
 

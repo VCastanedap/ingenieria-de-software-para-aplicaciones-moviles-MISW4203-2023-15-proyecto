@@ -16,7 +16,7 @@
         tools:targetApi="34">
 
         <activity
-            android:name=".colleccionistaActivity"
+            android:name=".ColleccionistaActivity"
             android:exported="false" />
         <activity
             android:name=".ListArtistasActivity"
