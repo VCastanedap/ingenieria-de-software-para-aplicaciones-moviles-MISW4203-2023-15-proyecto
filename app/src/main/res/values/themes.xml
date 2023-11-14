@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Theme.Vinilos" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="actionBarStyle">@style/MyActionBar</item>
+    </style>
 
-    <style name="Theme.Vinilos" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="MyActionBar" parent="Widget.MaterialComponents.ActionBar.Surface">
+        <item name="background">@drawable/gradient_background</item>
+    </style>
 </resources>
