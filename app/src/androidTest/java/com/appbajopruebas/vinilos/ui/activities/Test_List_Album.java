@@ -1,4 +1,4 @@
-package com.appbajopruebas.vinilos.ui.activities.testAlbum;
+package com.appbajopruebas.vinilos.ui.activities;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
