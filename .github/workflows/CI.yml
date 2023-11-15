@@ -11,17 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: CheckOut Code
-      uses: actions/checkout@v4
-      
-    - name: set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'oracle'
-        java-version: 17
-        
-    - name: Make Gradle executable
-      run: chmod +x ./gradlew
-      
-    - name: Test APK
-      run: ./gradlew clean androidTest
+      - name: CheckOut Code
+        uses: actions/checkout@v4
+
+      - name: set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'oracle'
+          java-version: 17
+
+      - name: Make Gradle executable
+        run: chmod +x ./gradlew
+
+      - name: Test APK
+        run: |
+          ./gradlew clean test --tests "com.appbajopruebas.vinilos.ui.activities.Test_Home"
+          ./gradlew clean test --tests "com.appbajopruebas.vinilos.ui.activities.Test_List_Album"
