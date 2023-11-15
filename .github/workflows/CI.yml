@@ -24,6 +24,4 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Test APK
-        run: |
-          ./gradlew clean test --tests "com.appbajopruebas.vinilos.ui.activities.Test_Home"
-          ./gradlew clean test --tests "com.appbajopruebas.vinilos.ui.activities.Test_List_Album"
+        run: ./gradlew test --tests "com.appbajopruebas.vinilos.ui.activities.*"
