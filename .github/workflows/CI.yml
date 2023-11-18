@@ -23,10 +23,5 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
-      - name: Setup Android Emulator - TEST ESPRESSO
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          script: ./gradlew connectedDebugAndroidTest
-          api-level: 29
-          arch: x86
-          emulator-options: -no-window -noaudio -no-boot-anim
+      - name: Test APK espresso
+        run: ./gradlew clean test

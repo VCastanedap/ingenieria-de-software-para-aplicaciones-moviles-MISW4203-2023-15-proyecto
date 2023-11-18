@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "cucumber": "^6.0.7",
+    "kraken-node": "^1.0.24"
+  },
+  "dependencies": {
+    "puppeteer": "^21.5.2"
+  }
+  "kraken": {
+    "chromeExecutablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+  }
+}
