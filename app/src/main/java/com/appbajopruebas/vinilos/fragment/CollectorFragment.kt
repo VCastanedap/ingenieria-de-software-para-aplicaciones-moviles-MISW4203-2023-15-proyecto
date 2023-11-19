@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.appbajopruebas.vinilos.R
+import com.appbajopruebas.vinilos.database.VinylRoomDatabase
 import com.appbajopruebas.vinilos.databinding.FragmentCollectorBinding
 import com.appbajopruebas.vinilos.models.Album
 import com.appbajopruebas.vinilos.models.Collector
@@ -52,12 +53,18 @@ class CollectorFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        viewModel = ViewModelProvider(this, CollectorViewModel.Factory(activity.application)).get(CollectorViewModel::class.java)
-        viewModel.collectors.observe(viewLifecycleOwner, Observer<List<Collector>> {
-            it.apply {
-                viewModelAdapter!!.collectors = this
+
+
+        val database = VinylRoomDatabase.getDatabase(activity.application)
+        val collectorDao = database.collectorsDao()
+
+        viewModel = ViewModelProvider(this, CollectorViewModel.Factory(activity.application, collectorDao)).get(CollectorViewModel::class.java)
+        viewModel.collectors.observe(viewLifecycleOwner, Observer<List<Collector>?> { collectors ->
+            collectors?.apply {
+                viewModelAdapter?.collectors = this
             }
         })
+
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
