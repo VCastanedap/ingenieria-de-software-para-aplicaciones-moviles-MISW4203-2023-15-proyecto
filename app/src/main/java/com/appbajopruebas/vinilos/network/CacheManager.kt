@@ -13,13 +13,18 @@ class CacheManager(context: Context) {
                 }
             }
     }
-    private var comments: HashMap<Int, List<Album>> = hashMapOf()
-    fun addAlbum(albumId: Int, comment: List<Album>){
-        if (!comments.containsKey(albumId)){
-            comments[albumId] = comment
-        }
+
+    //Cambiar el tipo de la variable album a una lista de álbumes
+    private var album: List<Album> = listOf()
+
+    //Modificar el método addAlbums para que reciba solo una lista de álbumes
+    fun addAlbums(albums: List<Album>){
+        //Asignar la lista de álbumes a la variable album
+        album = albums
     }
-    fun getComments(albumId: Int) : List<Album>{
-        return if (comments.containsKey(albumId)) comments[albumId]!! else listOf<Album>()
+    //Modificar el método getAlbums para que no reciba ningún parámetro
+    fun getAlbums() : List<Album>{
+        //Retornar la variable album
+        return album
     }
 }
