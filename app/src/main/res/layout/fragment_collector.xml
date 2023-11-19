@@ -12,12 +12,6 @@
     tools:ignore="MissingDefaultResource">
 
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/collectorRv"
         android:layout_width="match_parent"

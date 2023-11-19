@@ -1,0 +1,77 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "my-feature;my-scenario-2",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "My scenario 2",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "failed",
+              "duration": 19000000,
+              "error_message": "No Chrome installations found.\nError\n    at new LauncherError (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\chrome-launcher\\dist\\utils.js:26:22)\n    at new ChromeNotInstalledError (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\chrome-launcher\\dist\\utils.js:57:9)\n    at Launcher.launch (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\chrome-launcher\\dist\\chrome-launcher.js:189:23)\n    at launch (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\chrome-launcher\\dist\\chrome-launcher.js:35:20)\n    at launchChrome (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\devtools\\build\\launcher.js:80:55)\n    at launch (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\devtools\\build\\launcher.js:181:16)\n    at Function.newSession (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\devtools\\build\\index.js:54:54)\n    at Object.remote (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\webdriverio\\build\\index.js:77:43)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I wait for a signal containing \"hi\"",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:97"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "I wait",
+            "match": {
+              "location": "node_modules\\kraken-node\\lib\\steps\\both.js:61"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "failed",
+              "duration": 3000000,
+              "error_message": "TypeError: Cannot read properties of undefined (reading 'deleteSession')\n    at WebClient.<anonymous> (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\kraken-node\\lib\\clients\\WebClient.js:109:59)\n    at step (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\kraken-node\\lib\\clients\\WebClient.js:59:23)\n    at Object.next (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\kraken-node\\lib\\clients\\WebClient.js:40:53)\n    at C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\kraken-node\\lib\\clients\\WebClient.js:34:71\n    at new Promise (<anonymous>)\n    at __awaiter (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\kraken-node\\lib\\clients\\WebClient.js:30:12)\n    at WebClient.stop (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\kraken-node\\lib\\clients\\WebClient.js:104:16)\n    at WebClient.<anonymous> (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\kraken-node\\lib\\clients\\Client.js:109:51)\n    at step (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\kraken-node\\lib\\clients\\Client.js:67:23)\n    at Object.next (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\kraken-node\\lib\\clients\\Client.js:48:53)\n    at fulfilled (C:\\Users\\david\\Documents\\MAESTRIA\\GitHub\\Ciclo4\\Movil\\Movil2\\Kraken\\node_modules\\kraken-node\\lib\\clients\\Client.js:39:58)"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@user2",
+            "line": 8
+          },
+          {
+            "name": "@web",
+            "line": 8
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "my-feature",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "My feature",
+    "tags": [],
+    "uri": "features\\my_first.feature"
+  }
+]
