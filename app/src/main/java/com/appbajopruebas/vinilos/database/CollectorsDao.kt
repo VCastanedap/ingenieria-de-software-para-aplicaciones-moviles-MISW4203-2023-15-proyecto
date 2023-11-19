@@ -16,7 +16,9 @@ interface CollectorsDao {
     fun getAllCollectors(): List<Collector>
 
     @Query("SELECT * FROM collectors_table WHERE id = :collectorId")
-    fun getCollectorById(collectorId: Int): Collector
+    fun getCollectorById(collectorId: Int): Collector?
+
+
 
 
 }

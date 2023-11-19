@@ -5,19 +5,20 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.appbajopruebas.vinilos.models.Album
+import com.appbajopruebas.vinilos.models.Collector
 
 @Dao
 interface AlbumsDao {
-    @Dao
-    interface AlbumsDao {
-        @Query("SELECT * FROM albums_table")
-        fun getAlbums():List<Album>
+    @Query("SELECT * FROM albums_table")
+    fun getAlbums(): List<Album>
 
-        @Insert(onConflict = OnConflictStrategy.IGNORE)
-        suspend fun insert(album: Album)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(albums: List<Album>)
 
-        @Query("DELETE FROM albums_table")
-        suspend fun deleteAll():Int
-    }
+
 
 }
+
+
+
+
