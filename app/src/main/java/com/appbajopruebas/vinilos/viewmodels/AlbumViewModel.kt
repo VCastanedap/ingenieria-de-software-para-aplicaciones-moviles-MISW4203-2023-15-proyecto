@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.appbajopruebas.vinilos.models.Album
 import com.appbajopruebas.vinilos.network.NetworkServiceAdapter
+import com.appbajopruebas.vinilos.repositories.AlbumRepository
 
 
 class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
@@ -29,15 +30,17 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
+    private lateinit var albumRepository: AlbumRepository
+
     init {
         Log.d("***ViewModel","creo el viewmodel" )
+        albumRepository = AlbumRepository(application)
         refreshDataFromNetwork()
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
+        albumRepository.refreshData({
             _albums.postValue(it)
-            Log.d("AlbumViewModel", "Datos obtenidos: $it") // Añade esta línea
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
