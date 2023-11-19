@@ -1,9 +1,11 @@
 package com.appbajopruebas.vinilos.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.appbajopruebas.vinilos.models.Collector
 import com.appbajopruebas.vinilos.network.NetworkServiceAdapter
+import com.appbajopruebas.vinilos.repositories.CollectorsRepository
 
 
 class CollectorViewModel(application: Application) :  AndroidViewModel(application) {
@@ -23,12 +25,15 @@ class CollectorViewModel(application: Application) :  AndroidViewModel(applicati
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
+    private lateinit var collectorsRepository: CollectorsRepository
     init {
+        collectorsRepository = CollectorsRepository(application)
         refreshDataFromNetwork()
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getCollectors({
+        Log.d("*** viewModel","refreshData")
+        collectorsRepository.refreshData({
             _collectors.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
