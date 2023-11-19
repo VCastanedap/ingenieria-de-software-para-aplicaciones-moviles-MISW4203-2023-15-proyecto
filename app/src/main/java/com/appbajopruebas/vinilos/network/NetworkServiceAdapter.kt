@@ -12,6 +12,9 @@ import com.appbajopruebas.vinilos.models.Album
 import com.appbajopruebas.vinilos.models.Artist
 import com.appbajopruebas.vinilos.models.Collector
 import com.appbajopruebas.vinilos.models.Comment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 import org.json.JSONArray
 import org.json.JSONObject
@@ -33,27 +36,45 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
 
-    fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error:VolleyError)->Unit){
-
+    fun getAlbums(onComplete: suspend (resp: List<Album>) -> Unit, onError: suspend (error: VolleyError) -> Unit) {
         requestQueue.add(getRequest("albums",
             { response ->
-                val resp = JSONArray(response)
-                val list = mutableListOf<Album>()
-                for (i in 0 until resp.length()) {
-                    val item = resp.getJSONObject(i)
-                    list.add(i, Album(id = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"), tracks = listOf(), comments = listOf()))
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
+                        val resp = JSONArray(response)
+                        val list = mutableListOf<Album>()
+                        for (i in 0 until resp.length()) {
+                            val item = resp.getJSONObject(i)
+                            list.add(
+                                i, Album(
+                                    id = item.getInt("id"),
+                                    name = item.getString("name"),
+                                    cover = item.getString("cover"),
+                                    recordLabel = item.getString("recordLabel"),
+                                    releaseDate = item.getString("releaseDate"),
+                                    genre = item.getString("genre"),
+                                    description = item.getString("description")
+                                )
+                            )
+                        }
+                        if (list.isNotEmpty()) {
+                            Log.d("BD", list[0].toString())
+                        } else {
+                            Log.d("BD", "No trae nada de BD")
+                        }
+                        onComplete(list)
+                    } catch (error: Exception) {
+                        // Manejar la excepción en caso de error
+                        onError(VolleyError(error.message))
+                    }
                 }
-                if (list.isNotEmpty()) {
-                    Log.d("BD", list[0].toString())
-                }else{
-                    Log.d("BD", "No trae nada de BD")
-                }
-                onComplete(list)
             },
-
             {
-                onError(it)
-            }))
+                CoroutineScope(Dispatchers.IO).launch {
+                    onError(it)
+                }
+            })
+        )
     }
     fun getArtists(onComplete:(resp:List<Artist>)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("musicians",
@@ -87,8 +108,8 @@ class NetworkServiceAdapter constructor(context: Context) {
                 val list = mutableListOf<Collector>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    list.add(i, Collector(id = item.getInt("id"),name = item.getString("name"), telephone = item.getString("telephone"), email = item.getString("email"),
-                        collectorAlbums = listOf(), comments = listOf(), favoritePerformers = listOf()))
+                    list.add(i, Collector(id = item.getInt("id"),name = item.getString("name"), telephone = item.getString("telephone"), email = item.getString("email")
+                        /*,   collectorAlbums = listOf(), comments = listOf(), favoritePerformers = listOf()*/))
                 }
                 onComplete(list)
             },

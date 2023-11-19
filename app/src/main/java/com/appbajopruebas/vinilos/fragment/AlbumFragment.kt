@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.appbajopruebas.vinilos.R
+import com.appbajopruebas.vinilos.database.VinylRoomDatabase
 import com.appbajopruebas.vinilos.databinding.FragmentAlbumBinding
 import com.appbajopruebas.vinilos.models.Album
 import com.appbajopruebas.vinilos.viewmodels.AlbumViewModel
@@ -53,7 +54,11 @@ class AlbumFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
+
+        val database = VinylRoomDatabase.getDatabase(activity.application)
+        val albumDao = database.albumsDao()
+
+        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application,albumDao )).get(AlbumViewModel::class.java)
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
             it.apply {
                 viewModelAdapter!!.albums = this
