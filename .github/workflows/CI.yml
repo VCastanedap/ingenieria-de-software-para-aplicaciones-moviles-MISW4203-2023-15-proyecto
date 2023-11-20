@@ -23,5 +23,11 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
+      - name: Start emulator
+        uses: ReactiveCircus/android-emulator-runner@v2
+        with:
+          api-level: 21
+          script: echo "Emulator started"
+
       - name: Test APK unit
         run: ./gradlew clean test connectedAndroidTest
