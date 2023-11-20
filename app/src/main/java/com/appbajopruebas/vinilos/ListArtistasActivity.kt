@@ -9,7 +9,7 @@ class ListArtistasActivity : AppCompatActivity() {
         setContentView(R.layout.activity_list_artistas)
         // Habilita el botón de retroceso en la barra de acción
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Lista Artista"
+        supportActionBar?.title = "Lista Artistas"
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
