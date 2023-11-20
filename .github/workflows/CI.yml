@@ -2,9 +2,9 @@ name: Test APK
 
 on:
   push:
-    branches: [ main, develop, Develop,34-probar-la-vista-desarrollada-en-xml ]
+    branches: [ main, develop, Develop ]
   pull_request:
-    branches: [ main, develop, Develop,34-probar-la-vista-desarrollada-en-xml ]
+    branches: [ main, develop, Develop ]
 
 jobs:
   build:
@@ -23,5 +23,8 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
-      - name: Test APK espresso
+      - name: Test APK unit
         run: ./gradlew clean test
+      
+      - name: Test APK instrumented(expresso)
+        run: ./gradlew clean connectedAndroidTest --info
