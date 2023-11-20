@@ -26,7 +26,8 @@
             android:minHeight="50dp"
             android:orientation="horizontal"
             android:padding="5dp"
-            tools:layout_editor_absoluteX="16dp">
+            tools:layout_editor_absoluteX="16dp"
+            tools:ignore="MissingConstraints">
 
 
             <TextView
