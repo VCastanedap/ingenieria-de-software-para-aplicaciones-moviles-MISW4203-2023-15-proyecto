@@ -24,7 +24,4 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Test APK unit
-        run: ./gradlew clean test
-      
-      - name: Test APK instrumented(expresso)
-        run: ./gradlew clean connectedAndroidTest --info
+        run: ./gradlew clean test connectedAndroidTest
