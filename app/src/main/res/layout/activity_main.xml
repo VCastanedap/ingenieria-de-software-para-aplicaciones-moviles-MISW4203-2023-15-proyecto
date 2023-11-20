@@ -180,7 +180,7 @@
 
 
                     android:gravity="center_horizontal"
-                    android:text="@string/btn_Artista"
+                    android:text="@string/btn_Artistas"
                     android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
             </RelativeLayout>
