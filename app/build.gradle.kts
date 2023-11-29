@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("androidx.navigation.safeargs")
+    id("androidx.navigation.safeargs.kotlin")
     id ("org.jetbrains.kotlin.kapt")
 }
 

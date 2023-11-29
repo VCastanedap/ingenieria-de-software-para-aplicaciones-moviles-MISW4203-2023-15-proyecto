@@ -35,14 +35,22 @@ class VinilosActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration.Builder(navController.graph).build()
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-
+        // Habilita el botón de retroceso en la ActionBar
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // Cuando se hace clic en el botón de retroceso, inicia MainActivity
+                startActivity(Intent(this, MainActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
         return navController.navigateUp() || super.onSupportNavigateUp()
-
     }
 }

@@ -156,42 +156,4 @@ class NetworkServiceAdapter constructor(context: Context) {
     private fun putRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
         return  JsonObjectRequest(Request.Method.PUT, BASE_URL+path, body, responseListener, errorListener)
     }
-    fun getAlbumDetails(
-        albumId: Int,
-        onComplete: suspend (resp: Album) -> Unit,
-        onError: suspend (error: VolleyError) -> Unit
-    ) {
-        requestQueue.add(
-            getRequest(
-                "albums/$albumId",
-                { response ->
-                    CoroutineScope(Dispatchers.IO).launch {
-                        try {
-                            val item = JSONObject(response)
-                            val album = Album(
-                                id = item.getInt("id"),
-                                name = item.getString("name"),
-                                cover = item.getString("cover"),
-                                recordLabel = item.getString("recordLabel"),
-                                releaseDate = item.getString("releaseDate"),
-                                genre = item.getString("genre"),
-                                description = item.getString("description")
-                            )
-                            // Log de información del álbum obtenido
-                            Log.d("AlbumDetails", album.toString())
-
-                            onComplete(album)
-                        } catch (error: Exception) {
-                            // Manejar la excepción en caso de error
-                            onError(VolleyError(error.message))
-                        }
-                    }
-                },
-                {
-                    CoroutineScope(Dispatchers.IO).launch {
-                        onError(it)
-                    }
-                })
-        )
-    }
 }
