@@ -12,13 +12,9 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import com.android.volley.VolleyError
 import com.appbajopruebas.vinilos.database.AlbumsDao
 import com.appbajopruebas.vinilos.models.Album
-import com.appbajopruebas.vinilos.models.Collector
-import com.appbajopruebas.vinilos.network.NetworkServiceAdapter
 import com.appbajopruebas.vinilos.repositories.AlbumRepository
-import com.appbajopruebas.vinilos.repositories.CollectorsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class AlbumViewModel(application: Application, albumsDao: AlbumsDao) : AndroidViewModel(application) {
@@ -54,14 +50,13 @@ class AlbumViewModel(application: Application, albumsDao: AlbumsDao) : AndroidVi
                         _eventNetworkError.value = false
                         _isNetworkErrorShown.value = false
                     }
-                },
-                onError = { error ->
-                    // Actualizar LiveData en el hilo principal
-                    viewModelScope.launch(Dispatchers.Main) {
-                        _eventNetworkError.value = true
-                    }
                 }
-            )
+            ) { error ->
+                // Actualizar LiveData en el hilo principal
+                viewModelScope.launch(Dispatchers.Main) {
+                    _eventNetworkError.value = true
+                }
+            }
         } catch (error: VolleyError) {
             // Actualizar LiveData en el hilo principal
             viewModelScope.launch(Dispatchers.Main) {
