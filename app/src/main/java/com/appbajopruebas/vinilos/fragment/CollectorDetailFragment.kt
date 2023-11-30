@@ -1,6 +1,5 @@
 package com.appbajopruebas.vinilos.fragment
 
-import Collector
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
