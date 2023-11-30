@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.appbajopruebas.vinilos.R
 import com.appbajopruebas.vinilos.databinding.CollectorItemBinding
+import com.appbajopruebas.vinilos.fragment.AlbumFragmentDirections
+import com.appbajopruebas.vinilos.fragment.CollectorFragmentDirections
 import com.appbajopruebas.vinilos.models.Collector
 import com.bumptech.glide.Glide
 
@@ -34,12 +37,16 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
     override fun onBindViewHolder(holder: CollectorViewHolder, position: Int) {
         holder.viewDataBinding.also {
             it.collector = collectors[position]
-            // Cargar la imagen desde la URL
 
         }
         holder.viewDataBinding.root.setOnClickListener {
-            Log.d("AlbumsAdapter", "Clicked on ${collectors[position].name}")
+            Log.d("CollectorsAdapter", "Clicked on ${collectors[position].name}")
+
+            // Obtén el NavController desde la vista y navega al detalle del coleccionista
+            val action = CollectorFragmentDirections.actionCollectorFragmentToCollectorDetailFragment(collectors[position].id)
+            it.findNavController().navigate(action)
         }
+
     }
 
     override fun getItemCount(): Int {

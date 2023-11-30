@@ -9,7 +9,6 @@ import com.appbajopruebas.vinilos.models.Collector
 
 @Database(entities = [Album::class, Collector::class], version = 1, exportSchema = false)
 abstract class VinylRoomDatabase : RoomDatabase() {
-
     abstract fun albumsDao(): AlbumsDao
     abstract fun collectorsDao(): CollectorsDao
 
