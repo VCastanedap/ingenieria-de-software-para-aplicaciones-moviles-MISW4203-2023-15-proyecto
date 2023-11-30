@@ -1,15 +1,24 @@
 package com.appbajopruebas.vinilos.models
 
+import CollectorAlbum
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.Relation
+
 
 @Entity(tableName = "collectors_table")
 data class Collector(
-    //val collectorAlbums: List<CollectorAlbum>,
-    //val comments: List<Comment>,
-    val email: String,
-  //  val favoritePerformers: List<Performer>,
     @PrimaryKey val id: Int,
     val name: String,
-    val telephone: String
-)
+    val telephone: String,
+    val email: String,
+     // Relación uno a muchos con Album
+    @Relation(parentColumn = "id", entityColumn = "collectorId")
+    val collectorAlbums: List<CollectorAlbum>,
+
+    // Relación uno a muchos con Comment]
+    /*    @Relation(parentColumn = "id", entityColumn = "collectorId")
+        val comments: List<Comment>,
+    */
+
+    )
