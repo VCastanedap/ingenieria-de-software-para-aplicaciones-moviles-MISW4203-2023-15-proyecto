@@ -119,6 +119,42 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    // Método para obtener detalles de un coleccionista
+    fun getCollectorDetails(
+        collectorId: Int,
+        onComplete: suspend (resp: Collector) -> Unit,
+        onError: suspend (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            getRequest(
+                "collectors/$collectorId",
+                { response ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            val item = JSONObject(response)
+                            val collector = Collector(
+                                id = item.getInt("id"),
+                                name = item.getString("name"),
+                                telephone = item.getString("telephone"),
+                                email = item.getString("email")
+                                // Puedes agregar otros campos según sea necesario
+                            )
+                            Log.d("CollectorDetails", collector.toString())
+                            onComplete(collector)
+                        } catch (error: Exception) {
+                            onError(VolleyError(error.message))
+                        }
+                    }
+                },
+                {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        onError(it)
+                    }
+                }
+            )
+        )
+    }
+
     fun getComments(albumId:Int, onComplete:(resp:List<Comment>)->Unit, onError: (error:VolleyError)->Unit) {
         requestQueue.add(getRequest("albums/$albumId/comments",
             Response.Listener<String> { response ->

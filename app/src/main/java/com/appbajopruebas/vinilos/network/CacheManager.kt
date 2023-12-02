@@ -2,6 +2,7 @@ package com.appbajopruebas.vinilos.network
 
 import android.content.Context
 import com.appbajopruebas.vinilos.models.Album
+import com.appbajopruebas.vinilos.models.Collector
 
 class CacheManager private constructor(context: Context) {
 
@@ -16,38 +17,33 @@ class CacheManager private constructor(context: Context) {
             }
     }
 
-    // Cambiar el tipo de la variable albums a una mutableList de álbumes
+    // Lista mutable de álbumes
     private var albums: MutableList<Album> = mutableListOf()
 
-    // Modificar el método addAlbums para que reciba solo una lista de álbumes
+    // Lista mutable de coleccionistas
+    private var collectors: MutableList<Collector> = mutableListOf()
+
+    // Métodos para álbumes
     fun addAlbums(albums: List<Album>) {
-        // Limpiar la lista actual antes de agregar los nuevos álbumes
         this.albums.clear()
         this.albums.addAll(albums)
     }
 
-    // Modificar el método getAlbums para que no reciba ningún parámetro
     fun getAlbums(): List<Album> {
-        // Retornar una copia inmutable de la lista de álbumes
         return albums.toList()
     }
 
-    // Añadir método para obtener un álbum por su ID
     fun getAlbumById(albumId: Int): Album? {
         return albums.find { it.id == albumId }
     }
 
-    // Añadir método para agregar un álbum individual
     fun addAlbum(album: Album) {
-        // Verificar si el álbum ya está en la lista
         val existingAlbum = albums.find { it.id == album.id }
         if (existingAlbum == null) {
-            // Si no existe, agregarlo a la lista
             val updatedList = albums.toMutableList()
             updatedList.add(album)
             this.albums = updatedList
         } else {
-            // Si ya existe, actualizar sus detalles
             val updatedList = albums.map {
                 if (it.id == album.id) {
                     album
@@ -59,8 +55,41 @@ class CacheManager private constructor(context: Context) {
         }
     }
 
-    // Añadir método para obtener un álbum por su ID
     fun getAlbum(albumId: Int): Album? {
         return albums.find { it.id == albumId }
     }
+
+    // Métodos para coleccionistas
+    fun addCollectors(collectors: List<Collector>) {
+        this.collectors.clear()
+        this.collectors.addAll(collectors)
+    }
+
+    fun getCollectors(): List<Collector> {
+        return collectors.toList()
+    }
+
+    fun getCollectorById(collectorId: Int): Collector? {
+        return collectors.find { it.id == collectorId }
+    }
+
+    fun addCollector(collector: Collector) {
+        val existingCollector = collectors.find { it.id == collector.id }
+        if (existingCollector == null) {
+            val updatedList = collectors.toMutableList()
+            updatedList.add(collector)
+            this.collectors = updatedList
+        } else {
+            val updatedList = collectors.map {
+                if (it.id == collector.id) {
+                    collector
+                } else {
+                    it
+                }
+            }.toMutableList()
+            this.collectors = updatedList
+        }
+    }
+
+
 }
