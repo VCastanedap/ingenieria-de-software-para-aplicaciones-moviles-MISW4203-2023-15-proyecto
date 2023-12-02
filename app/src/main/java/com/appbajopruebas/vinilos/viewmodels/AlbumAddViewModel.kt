@@ -17,9 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class AlbumViewModel(application: Application, albumsDao: AlbumsDao) : AndroidViewModel(application) {
-
-
+class AlbumAddViewModel(application: Application, albumsDao: AlbumsDao) : AndroidViewModel(application) {
 
     private val _albums = MutableLiveData<List<Album>>()
     private val _albumRepository = AlbumRepository(application, albumsDao)
@@ -72,28 +70,21 @@ class AlbumViewModel(application: Application, albumsDao: AlbumsDao) : AndroidVi
         }
     }
 
-
-    private val _errorMessage = MutableLiveData<String>()
-    val errorMessage: LiveData<String>
-        get() = _errorMessage
     fun addAlbum(name: String, cover: String, releaseDate: String, description: String, genre: String, recordLabel: String) {
         viewModelScope.launch {
-            try {
-                val success: Album? = _albumRepository.addAlbum(name, cover, releaseDate, description, genre, recordLabel)
+            val success: Album? = _albumRepository.addAlbum(name, cover, releaseDate, description, genre, recordLabel)
 
-                if (success is Album) {
-                    _eventNetworkError.value = false
-                    _isNetworkErrorShown.value = false
-                } else {
-                    _eventNetworkError.value = true
-                    _errorMessage.value = "Hubo un error 400 al agregar el álbum. Por favor, inténtalo de nuevo."
-                }
-            } catch (error: VolleyError) {
+            if (success is Album) {
+                _eventAlbumCreated.value = true
+                _eventNetworkError.value = false
+                _isNetworkErrorShown.value = false
+            } else {
                 _eventNetworkError.value = true
-                _errorMessage.value = "Error de red. Por favor, verifica tu conexión a internet e inténtalo de nuevo."
             }
         }
     }
+
+
 
 
     fun onNetworkErrorShown() {
@@ -102,9 +93,9 @@ class AlbumViewModel(application: Application, albumsDao: AlbumsDao) : AndroidVi
 
     class Factory(val app: Application, private val albumsDao: AlbumsDao) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
-            if (modelClass.isAssignableFrom(AlbumViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(AlbumAddViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return AlbumViewModel(app, albumsDao) as T
+                return AlbumAddViewModel(app, albumsDao) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

@@ -14,7 +14,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:navGraph="@navigation/nav_graph"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <View
+            android:id="@+id/vector1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/buscador__2_"
+            android:gravity="center" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -263,26 +277,208 @@
 
         </LinearLayout>
 
+        <View
+            android:id="@+id/divider"
+            android:layout_width="391dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginBottom="14dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:layout_editor_absoluteX="0dp" />
+
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="384dp"
-            android:layout_height="181dp"
+            android:layout_width="0dp"
+            android:layout_height="183dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="36dp"
+            android:layout_marginEnd="30dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.52"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
             tools:ignore="UselessLeaf">
 
-            <TextView
-                android:id="@+id/get_result_text"
-                android:layout_width="278dp"
-                android:layout_height="186dp"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/app_name"
-                android:textSize="30sp"
-                tools:listitem="@layout/album_item"/>
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+                <RelativeLayout
+                    android:id="@+id/minicard4"
+                    android:layout_width="96dp"
+                    android:layout_height="132dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/transparente"
+                    android:gravity="center_horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/minicardVinilosAdd"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="36dp"
+                        android:background="@drawable/minicard"
+                        android:gravity="center">
+
+                        <!-- Auto layout, variables, and unit scale are not yet supported -->
+                        <View
+                            android:id="@+id/vector4"
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginTop="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="18dp"
+                            android:background="@drawable/albumadd"
+                            android:gravity="center" />
+
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txtVinilosAdd"
+                        android:layout_width="56dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="104dp"
+
+                        android:gravity="center_horizontal"
+                        android:text="@string/btn_Vinilos_add"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+                </RelativeLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <RelativeLayout
+                    android:id="@+id/minicard5"
+                    android:layout_width="96dp"
+                    android:layout_height="132dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/transparente"
+                    android:gravity="center_horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/minicardArtistaAdd"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="36dp"
+                        android:background="@drawable/minicard"
+                        android:gravity="center">
+
+                        <!-- Auto layout, variables, and unit scale are not yet supported -->
+                        <View
+                            android:id="@+id/vector5"
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginTop="18dp"
+                            android:layout_marginRight="18dp"
+                            android:layout_marginBottom="18dp"
+                            android:background="@drawable/artistaadd"
+                            android:gravity="center" />
+
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txtArtistaAdd"
+                        android:layout_width="56dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+
+                        android:layout_marginTop="104dp"
+
+
+                        android:gravity="center_horizontal"
+                        android:text="@string/btn_Artista_add"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+                </RelativeLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Auto layout, variables, and unit scale are not yet supported -->
+
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

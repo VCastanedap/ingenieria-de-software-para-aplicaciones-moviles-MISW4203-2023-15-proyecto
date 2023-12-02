@@ -15,6 +15,9 @@ interface AlbumsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(albums: List<Album>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertUno(album: Album)
+
     @Query("SELECT * FROM albums_table WHERE id = :albumId")
     fun getAlbum(albumId: Int): Album
     @Insert(onConflict = OnConflictStrategy.REPLACE)
