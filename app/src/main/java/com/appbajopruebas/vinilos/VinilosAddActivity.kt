@@ -7,21 +7,21 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.appbajopruebas.vinilos.databinding.ActivityVinilosBinding
-
+import com.appbajopruebas.vinilos.databinding.ActivityVinilosAddBinding
 class VinilosAddActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityVinilosBinding
+    private lateinit var binding: ActivityVinilosAddBinding
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Inicializar el objeto de vinculación
-        binding = ActivityVinilosBinding.inflate(layoutInflater)
+        binding = ActivityVinilosAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Configurar la ActionBar
         supportActionBar?.title = "Agregar Vinilos"
+
 
         // Obtener el fragmento de navegación desde esta Activity
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_add) as? NavHostFragment

@@ -2,6 +2,7 @@
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,9 +14,6 @@
 
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -101,9 +99,24 @@
             android:layout_gravity="end"
             android:text="Agregar Álbum" />
 
+        <TextView
+            android:id="@+id/textViewWarningfMessage"
+            android:layout_width="337dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="* Por favor esperar un momento" />
+
+        <TextView
+            android:id="@+id/textViewErrorMessage"
+            android:layout_width="337dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="" />
+
+
     </LinearLayout>
-
-
 
 
 </FrameLayout>

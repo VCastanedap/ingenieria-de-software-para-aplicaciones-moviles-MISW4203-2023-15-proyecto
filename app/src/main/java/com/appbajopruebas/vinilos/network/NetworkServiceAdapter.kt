@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 
 class NetworkServiceAdapter constructor(context: Context) {
@@ -76,6 +77,43 @@ class NetworkServiceAdapter constructor(context: Context) {
             })
         )
     }
+
+    fun addAlbum(body: JSONObject, onComplete: (resp: Album) -> Unit, onError: (error: VolleyError) -> Unit) {
+        val url = "albums"
+
+        requestQueue.add(postRequest(url, body,
+            { response ->
+                try {
+                    // Aquí puedes agregar logs para ver la respuesta del servidor
+                    Log.d("AddAlbumResponse", "Response: $response")
+
+                    val album = Album(
+                        id = response.getInt("id"),
+                        name = response.getString("name"),
+                        cover = response.getString("cover"),
+                        recordLabel = response.getString("recordLabel"),
+                        releaseDate = response.getString("releaseDate"),
+                        genre = response.getString("genre"),
+                        description = response.getString("description"),
+                    )
+
+                    // Log para verificar que se creó el objeto Album correctamente
+                    Log.d("AddAlbumSuccess", "Album created: $album")
+
+                    onComplete(album)
+                } catch (e: JSONException) {
+                    // Log en caso de error al analizar la respuesta JSON
+                    Log.e("AddAlbumError", "Error parsing JSON response: $e")
+                    onError(VolleyError("Error parsing JSON response", e))
+                }
+            },
+            {
+                // Log para errores de la solicitud
+                Log.e("AddAlbumError", "Error in request: ${it.message}")
+                onError(it)
+            }))
+    }
+
     fun getArtists(onComplete:(resp:List<Artist>)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("musicians",
             { response ->
