@@ -12,6 +12,7 @@ import com.appbajopruebas.vinilos.models.Album
 import com.appbajopruebas.vinilos.models.Artist
 import com.appbajopruebas.vinilos.models.Collector
 import com.appbajopruebas.vinilos.models.Comment
+import com.appbajopruebas.vinilos.models.Prize
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -268,4 +269,38 @@ class NetworkServiceAdapter constructor(context: Context) {
                 })
         )
     }
+
+    fun addPrize(body: JSONObject, onComplete: (resp: Prize) -> Unit, onError: (error: VolleyError) -> Unit) {
+        val url = "prizes"
+
+        requestQueue.add(postRequest(url, body,
+            { response ->
+                try {
+                    // Log para verificar la respuesta del servidor
+                    Log.d("AddPrizeResponse", "Response: $response")
+
+                    val prize = Prize(
+                        id = response.getInt("id"),
+                        name = response.getString("name"),
+                        organization = response.getString("organization"),
+                        description = response.getString("description"),
+                    )
+
+                    // Log para verificar que se creó el objeto Prize correctamente
+                    Log.d("AddPrizeSuccess", "Prize created: $prize")
+
+                    onComplete(prize)
+                } catch (e: JSONException) {
+                    // Log en caso de error al analizar la respuesta JSON
+                    Log.e("AddPrizeError", "Error parsing JSON response: $e")
+                    onError(VolleyError("Error parsing JSON response", e))
+                }
+            },
+            {
+                // Log para errores de la solicitud
+                Log.e("AddPrizeError", "Error in request: ${it.message}")
+                onError(it)
+            }))
+    }
+
 }
