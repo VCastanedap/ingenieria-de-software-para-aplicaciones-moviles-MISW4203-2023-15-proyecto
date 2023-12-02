@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".fragment.PrizeAddFragment"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="1dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_add_new_prize"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingBottom="16dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#7C777DB1"
+            android:background="@drawable/fondo_card"
+            >
+
+            <EditText
+                android:id="@+id/editTextPrizeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del premio"
+                android:textColorHint="@color/black"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                android:background="@drawable/box"
+                android:layout_margin="3dp"
+                android:padding="10dp" />
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#7C777DB1"
+            android:background="@drawable/fondo_card"
+            >
+
+            <EditText
+                android:id="@+id/editTextOrganization"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Organización"
+                android:textColorHint="@color/black"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                android:background="@drawable/box"
+                android:layout_margin="3dp"
+                android:padding="10dp" />
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#7C777DB1"
+            android:background="@drawable/fondo_card"
+            >
+
+            <EditText
+                android:id="@+id/editTextPrizeDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Descripción"
+                android:textColorHint="@color/black"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                android:background="@drawable/box"
+                android:layout_margin="3dp"
+                android:padding="10dp" />
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/btnAddPrize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+
+            android:background="@drawable/fondo_card"
+            android:text="Agregar Premio" />
+
+        <TextView
+            android:id="@+id/textViewWarningMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="* Por favor, espera un momento"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/textViewErrorMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text=""
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+</FrameLayout>

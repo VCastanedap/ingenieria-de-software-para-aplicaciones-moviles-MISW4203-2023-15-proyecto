@@ -68,6 +68,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //listener btn_Collecionista
+        val minicard5 = findViewById<RelativeLayout>(R.id.minicard5)
+        minicard5.setOnClickListener {
+            val intent = Intent(this, PrizesAddActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 }

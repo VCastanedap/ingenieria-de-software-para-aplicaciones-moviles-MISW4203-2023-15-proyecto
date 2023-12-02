@@ -4,7 +4,7 @@
     <string name="btn_Vinilos_add">+ Vinilos</string>
     <string name="btn_Artistas">Artistas</string>
     <string name="btn_Artista">Artista</string>
-    <string name="btn_Artista_add">+ Artista</string>
+    <string name="btn_Artista_add">+ Premio</string>
     <string name="btn_Colleccionista">Colleccion</string>
     <string name="btn_Prueba">Prueba</string>
     <string name="title_add_new_album">Agregar album</string>
@@ -27,4 +27,5 @@
     <string name="title_albums">Albums</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_add_new_prize">Premiacion</string>
 </resources>
