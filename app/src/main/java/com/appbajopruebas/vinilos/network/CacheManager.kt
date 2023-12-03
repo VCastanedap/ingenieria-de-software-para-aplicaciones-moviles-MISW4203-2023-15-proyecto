@@ -2,6 +2,7 @@ package com.appbajopruebas.vinilos.network
 
 import android.content.Context
 import com.appbajopruebas.vinilos.models.Album
+import com.appbajopruebas.vinilos.models.Artist
 import com.appbajopruebas.vinilos.models.Collector
 
 class CacheManager private constructor(context: Context) {
@@ -22,6 +23,9 @@ class CacheManager private constructor(context: Context) {
 
     // Lista mutable de coleccionistas
     private var collectors: MutableList<Collector> = mutableListOf()
+
+    // Lista mutable de artistas
+    private var artists: MutableList<Artist> = mutableListOf()
 
     // Métodos para álbumes
     fun addAlbums(albums: List<Album>) {
@@ -91,5 +95,35 @@ class CacheManager private constructor(context: Context) {
         }
     }
 
+    // Métodos para artistas
+    fun addArtists(artists: List<Artist>) {
+        this.artists.clear()
+        this.artists.addAll(artists)
+    }
 
+    fun getArtists(): List<Artist> {
+        return artists.toList()
+    }
+
+    fun getArtistsById(artistId: Int): Artist? {
+        return artists.find { it.id == artistId }
+    }
+
+    fun addArtist(artist: Artist) {
+        val existingArtist = artists.find { it.id == artist.id }
+        if (existingArtist == null) {
+            val updatedList = artists.toMutableList()
+            updatedList.add(artist)
+            this.artists = updatedList
+        } else {
+            val updatedList = artists.map {
+                if (it.id == artist.id) {
+                    artist
+                } else {
+                    it
+                }
+            }.toMutableList()
+            this.artists = updatedList
+        }
+    }
 }

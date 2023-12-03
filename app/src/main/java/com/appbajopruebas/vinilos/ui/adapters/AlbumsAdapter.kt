@@ -16,6 +16,7 @@ import com.appbajopruebas.vinilos.models.Album
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
 
     var albums :List<Album> = emptyList()
@@ -48,7 +49,6 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             val action = AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(albums[position].id)
             it.findNavController().navigate(action)
         }
-
     }
 
     override fun getItemCount(): Int {

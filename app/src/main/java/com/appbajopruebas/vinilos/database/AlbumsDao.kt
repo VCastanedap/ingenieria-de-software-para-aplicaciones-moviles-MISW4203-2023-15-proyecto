@@ -23,5 +23,3 @@ interface AlbumsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertOne(album: Album) // Cambiado de List<Album> a Album
 }
-
-

@@ -22,16 +22,6 @@
         android:name="com.appbajopruebas.vinilos.fragment.AlbumDetailFragment"
         android:label="Album"
         tools:layout="@layout/fragment_album_detail" >
-
     </fragment>
-
-
-
-
-
-
-
-
-
 </navigation>
 
