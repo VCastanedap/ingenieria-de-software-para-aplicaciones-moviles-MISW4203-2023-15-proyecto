@@ -104,7 +104,8 @@
             android:layout_gravity="end"
 
             android:background="@drawable/fondo_card"
-            android:text="Agregar Premio" />
+            android:text="Agregar Premio"
+            android.contentDescription="Boton para agregar premio" />
 
         <TextView
             android:id="@+id/textViewWarningMessage"

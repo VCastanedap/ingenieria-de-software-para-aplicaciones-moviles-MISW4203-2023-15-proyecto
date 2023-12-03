@@ -183,7 +183,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:background="@drawable/fondo_card"
-            android:text="Agregar Álbum" />
+            android:text="Agregar Álbum"
+            android.contentDescription="Boton para agregar álbum" />
 
         <TextView
             android:id="@+id/textViewWarningfMessage"
