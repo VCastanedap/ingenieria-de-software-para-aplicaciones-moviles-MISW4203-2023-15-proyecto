@@ -129,8 +129,8 @@ class NetworkServiceAdapter constructor(context: Context) {
                             image = item.getString("image"),
                             description = item.getString("description"),
                             birthDate = item.getString("birthDate"),
-                            albums = listOf(),
-                            performerPrizes = listOf()
+                            // albums = listOf(),
+                            // performerPrizes = listOf()
                         )
                     )
                 }
@@ -140,6 +140,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
+
     fun getCollectors(onComplete:(resp:List<Collector>)->Unit, onError: (error:VolleyError)->Unit) {
         requestQueue.add(getRequest("collectors",
             { response ->
@@ -256,6 +257,43 @@ class NetworkServiceAdapter constructor(context: Context) {
                             Log.d("AlbumDetails", album.toString())
 
                             onComplete(album)
+                        } catch (error: Exception) {
+                            // Manejar la excepción en caso de error
+                            onError(VolleyError(error.message))
+                        }
+                    }
+                },
+                {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        onError(it)
+                    }
+                })
+        )
+    }
+
+    fun getArtistDetails(
+        artistId: Int,
+        onComplete: suspend (resp: Artist) -> Unit,
+        onError: suspend (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            getRequest(
+                "musicians/$artistId",
+                { response ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            val item = JSONObject(response)
+                            val artist = Artist(
+                                id = item.getInt("id"),
+                                name = item.getString("name"),
+                                image = item.getString("image"),
+                                description = item.getString("description"),
+                                birthDate = item.getString("birthDate"),
+                            )
+                            // Log de información del álbum obtenido
+                            Log.d("ArtistDetails", artist.toString())
+
+                            onComplete(artist)
                         } catch (error: Exception) {
                             // Manejar la excepción en caso de error
                             onError(VolleyError(error.message))
