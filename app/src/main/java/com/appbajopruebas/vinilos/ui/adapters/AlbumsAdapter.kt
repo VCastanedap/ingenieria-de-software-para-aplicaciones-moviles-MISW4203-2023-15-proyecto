@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.appbajopruebas.vinilos.R
 import com.appbajopruebas.vinilos.databinding.AlbumItemBinding
+import com.appbajopruebas.vinilos.fragment.AlbumFragmentDirections
 import com.appbajopruebas.vinilos.models.Album
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -43,6 +44,10 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         }
         holder.viewDataBinding.root.setOnClickListener {
             Log.d("AlbumsAdapter", "Clicked on ${albums[position].name}")
+
+            // Obtén el NavController desde la vista y navega al detalle del álbum
+            val action = AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(albums[position].id)
+            it.findNavController().navigate(action)
         }
     }
 

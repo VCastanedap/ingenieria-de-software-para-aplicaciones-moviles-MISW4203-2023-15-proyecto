@@ -8,7 +8,23 @@
     <fragment
         android:id="@+id/collectorFragment"
         android:name="com.appbajopruebas.vinilos.fragment.CollectorFragment"
+        android:label="Collectors"
         tools:layout="@layout/fragment_collector" >
+        <action
+            android:id="@+id/action_collectorFragment_to_collectorDetailFragment"
+            app:destination="@id/collectorDetailFragment">
+            <argument
+                android:name="collectorId"
+                app:argType="integer"/>
+        </action>
     </fragment>
-</navigation>
 
+    <fragment
+        android:id="@+id/collectorDetailFragment"
+        android:name="com.appbajopruebas.vinilos.fragment.CollectorDetailFragment"
+        android:label="Collector"
+        tools:layout="@layout/fragment_collector_detail" >
+
+    </fragment>
+
+</navigation>

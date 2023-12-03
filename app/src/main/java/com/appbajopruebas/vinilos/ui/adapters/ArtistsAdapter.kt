@@ -1,16 +1,21 @@
 package com.appbajopruebas.vinilos.ui.adapters
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.appbajopruebas.vinilos.R
 import com.appbajopruebas.vinilos.databinding.ArtistItemBinding
+import com.appbajopruebas.vinilos.fragment.ArtistFragmentDirections
 import com.appbajopruebas.vinilos.models.Artist
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 
 class ArtistsAdapter : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
 
@@ -42,6 +47,10 @@ class ArtistsAdapter : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
         }
         holder.viewDataBinding.root.setOnClickListener {
             Log.d("ArtistsAdapter", "Clicked on ${artists[position].name}")
+
+            // Obtén el NavController desde la vista y navega al detalle del álbum
+            val action = ArtistFragmentDirections.actionArtistFragmentToArtistDetailFragment(artists[position].id)
+            it.findNavController().navigate(action)
         }
     }
 
@@ -56,6 +65,17 @@ class ArtistsAdapter : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
         companion object {
             @LayoutRes
             val LAYOUT = R.layout.artist_item
+        }
+
+        @SuppressLint("ResourceType")
+        fun bind(artist: Artist) {
+            Glide.with(itemView)
+                .load(artist.image.toUri().buildUpon().scheme("https").build())
+                .apply(RequestOptions()
+                    .placeholder(R.drawable.loading_animation)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .error(R.drawable.ic_broken_image))
+                .into(viewDataBinding.imageViewCard)
         }
     }
 

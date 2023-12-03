@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         //listener btn_Vinilos
         val minicard1 = findViewById<RelativeLayout>(R.id.minicard1)
-        val getResultTextView : TextView = findViewById(R.id.get_result_text)
 
         minicard1.setOnClickListener {
             val intent = Intent(this, VinilosActivity::class.java)
@@ -59,6 +58,20 @@ class MainActivity : AppCompatActivity() {
         val minicard3 = findViewById<RelativeLayout>(R.id.minicard3)
         minicard3.setOnClickListener {
             val intent = Intent(this, ColleccionistaActivity::class.java)
+            startActivity(intent)
+        }
+
+        //listener btn_Collecionista
+        val minicard4 = findViewById<RelativeLayout>(R.id.minicard4)
+        minicard4.setOnClickListener {
+            val intent = Intent(this, VinilosAddActivity::class.java)
+            startActivity(intent)
+        }
+
+        //listener btn_Collecionista
+        val minicard5 = findViewById<RelativeLayout>(R.id.minicard5)
+        minicard5.setOnClickListener {
+            val intent = Intent(this, PrizesAddActivity::class.java)
             startActivity(intent)
         }
 

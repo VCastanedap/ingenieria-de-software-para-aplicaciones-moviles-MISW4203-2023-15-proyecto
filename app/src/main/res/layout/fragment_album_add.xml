@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".fragment.AlbumFragment"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_add_new_album"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:paddingBottom="16dp"/>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#7C777DB1"
+            android:background="@drawable/fondo_card"
+            >
+
+            <EditText
+                android:id="@+id/editTextAlbumName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del álbum"
+                android:textColorHint="@color/black"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                android:background="@drawable/box"
+                android:layout_margin="3dp"
+                android:padding="10dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#7C777DB1"
+            android:background="@drawable/fondo_card"
+            >
+
+            <EditText
+                android:id="@+id/editTextAlbumCover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Portada"
+                android:textColorHint="@color/black"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                android:background="@drawable/box"
+                android:layout_margin="3dp"
+                android:padding="10dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#7C777DB1"
+            android:background="@drawable/fondo_card"
+            >
+
+            <EditText
+                android:id="@+id/editTextReleaseDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha de lanzamiento"
+                android:textColorHint="@color/black"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                android:background="@drawable/box"
+                android:layout_margin="3dp"
+                android:padding="10dp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#7C777DB1"
+            android:background="@drawable/fondo_card"
+            >
+
+            <EditText
+                android:id="@+id/editTextDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Descripción"
+                android:textColorHint="@color/black"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                android:background="@drawable/box"
+                android:layout_margin="3dp"
+                android:padding="10dp" />
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#7C777DB1"
+            android:background="@drawable/fondo_card"
+            >
+
+            <Spinner
+                android:id="@+id/spinnerGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:padding="10dp"
+                android:textColorHint="@color/white"
+                android:textColor="@android:color/white"
+                android:entries="@array/genre_options"
+                android:background="@drawable/box"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#7C777DB1"
+            android:background="@drawable/fondo_card"
+            >
+
+            <Spinner
+                android:id="@+id/spinnerRecordLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:padding="10dp"
+                android:textColorHint="@color/white"
+                android:textColor="@android:color/white"
+                android:entries="@array/recordLabel_options"
+
+                android:background="@drawable/box"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+        <Button
+            android:id="@+id/btnAddAlbum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@drawable/fondo_card"
+            android:text="Agregar Álbum" />
+
+        <TextView
+            android:id="@+id/textViewWarningfMessage"
+            android:layout_width="337dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+
+            android:text="* Por favor esperar un momento" />
+
+        <TextView
+            android:id="@+id/textViewErrorMessage"
+            android:layout_width="337dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="" />
+
+
+    </LinearLayout>
+
+
+</FrameLayout>

@@ -12,11 +12,13 @@ import com.appbajopruebas.vinilos.models.Album
 import com.appbajopruebas.vinilos.models.Artist
 import com.appbajopruebas.vinilos.models.Collector
 import com.appbajopruebas.vinilos.models.Comment
+import com.appbajopruebas.vinilos.models.Prize
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 
 class NetworkServiceAdapter constructor(context: Context) {
@@ -76,6 +78,43 @@ class NetworkServiceAdapter constructor(context: Context) {
             })
         )
     }
+
+    fun addAlbum(body: JSONObject, onComplete: (resp: Album) -> Unit, onError: (error: VolleyError) -> Unit) {
+        val url = "albums"
+
+        requestQueue.add(postRequest(url, body,
+            { response ->
+                try {
+                    // Aquí puedes agregar logs para ver la respuesta del servidor
+                    Log.d("AddAlbumResponse", "Response: $response")
+
+                    val album = Album(
+                        id = response.getInt("id"),
+                        name = response.getString("name"),
+                        cover = response.getString("cover"),
+                        recordLabel = response.getString("recordLabel"),
+                        releaseDate = response.getString("releaseDate"),
+                        genre = response.getString("genre"),
+                        description = response.getString("description"),
+                    )
+
+                    // Log para verificar que se creó el objeto Album correctamente
+                    Log.d("AddAlbumSuccess", "Album created: $album")
+
+                    onComplete(album)
+                } catch (e: JSONException) {
+                    // Log en caso de error al analizar la respuesta JSON
+                    Log.e("AddAlbumError", "Error parsing JSON response: $e")
+                    onError(VolleyError("Error parsing JSON response", e))
+                }
+            },
+            {
+                // Log para errores de la solicitud
+                Log.e("AddAlbumError", "Error in request: ${it.message}")
+                onError(it)
+            }))
+    }
+
     fun getArtists(onComplete:(resp:List<Artist>)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("musicians",
             { response ->
@@ -90,8 +129,8 @@ class NetworkServiceAdapter constructor(context: Context) {
                             image = item.getString("image"),
                             description = item.getString("description"),
                             birthDate = item.getString("birthDate"),
-                            albums = listOf(),
-                            performerPrizes = listOf()
+                            // albums = listOf(),
+                            // performerPrizes = listOf()
                         )
                     )
                 }
@@ -101,6 +140,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
+
     fun getCollectors(onComplete:(resp:List<Collector>)->Unit, onError: (error:VolleyError)->Unit) {
         requestQueue.add(getRequest("collectors",
             { response ->
@@ -117,6 +157,42 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
                 Log.d("", it.message.toString())
             }))
+    }
+
+    // Método para obtener detalles de un coleccionista
+    fun getCollectorDetails(
+        collectorId: Int,
+        onComplete: suspend (resp: Collector) -> Unit,
+        onError: suspend (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            getRequest(
+                "collectors/$collectorId",
+                { response ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            val item = JSONObject(response)
+                            val collector = Collector(
+                                id = item.getInt("id"),
+                                name = item.getString("name"),
+                                telephone = item.getString("telephone"),
+                                email = item.getString("email")
+                                // Puedes agregar otros campos según sea necesario
+                            )
+                            Log.d("CollectorDetails", collector.toString())
+                            onComplete(collector)
+                        } catch (error: Exception) {
+                            onError(VolleyError(error.message))
+                        }
+                    }
+                },
+                {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        onError(it)
+                    }
+                }
+            )
+        )
     }
 
     fun getComments(albumId:Int, onComplete:(resp:List<Comment>)->Unit, onError: (error:VolleyError)->Unit) {
@@ -156,4 +232,113 @@ class NetworkServiceAdapter constructor(context: Context) {
     private fun putRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
         return  JsonObjectRequest(Request.Method.PUT, BASE_URL+path, body, responseListener, errorListener)
     }
+    fun getAlbumDetails(
+        albumId: Int,
+        onComplete: suspend (resp: Album) -> Unit,
+        onError: suspend (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            getRequest(
+                "albums/$albumId",
+                { response ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            val item = JSONObject(response)
+                            val album = Album(
+                                id = item.getInt("id"),
+                                name = item.getString("name"),
+                                cover = item.getString("cover"),
+                                recordLabel = item.getString("recordLabel"),
+                                releaseDate = item.getString("releaseDate"),
+                                genre = item.getString("genre"),
+                                description = item.getString("description")
+                            )
+                            // Log de información del álbum obtenido
+                            Log.d("AlbumDetails", album.toString())
+
+                            onComplete(album)
+                        } catch (error: Exception) {
+                            // Manejar la excepción en caso de error
+                            onError(VolleyError(error.message))
+                        }
+                    }
+                },
+                {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        onError(it)
+                    }
+                })
+        )
+    }
+
+    fun getArtistDetails(
+        artistId: Int,
+        onComplete: suspend (resp: Artist) -> Unit,
+        onError: suspend (error: VolleyError) -> Unit
+    ) {
+        requestQueue.add(
+            getRequest(
+                "musicians/$artistId",
+                { response ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            val item = JSONObject(response)
+                            val artist = Artist(
+                                id = item.getInt("id"),
+                                name = item.getString("name"),
+                                image = item.getString("image"),
+                                description = item.getString("description"),
+                                birthDate = item.getString("birthDate"),
+                            )
+                            // Log de información del álbum obtenido
+                            Log.d("ArtistDetails", artist.toString())
+
+                            onComplete(artist)
+                        } catch (error: Exception) {
+                            // Manejar la excepción en caso de error
+                            onError(VolleyError(error.message))
+                        }
+                    }
+                },
+                {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        onError(it)
+                    }
+                })
+        )
+    }
+
+    fun addPrize(body: JSONObject, onComplete: (resp: Prize) -> Unit, onError: (error: VolleyError) -> Unit) {
+        val url = "prizes"
+
+        requestQueue.add(postRequest(url, body,
+            { response ->
+                try {
+                    // Log para verificar la respuesta del servidor
+                    Log.d("AddPrizeResponse", "Response: $response")
+
+                    val prize = Prize(
+                        id = response.getInt("id"),
+                        name = response.getString("name"),
+                        organization = response.getString("organization"),
+                        description = response.getString("description"),
+                    )
+
+                    // Log para verificar que se creó el objeto Prize correctamente
+                    Log.d("AddPrizeSuccess", "Prize created: $prize")
+
+                    onComplete(prize)
+                } catch (e: JSONException) {
+                    // Log en caso de error al analizar la respuesta JSON
+                    Log.e("AddPrizeError", "Error parsing JSON response: $e")
+                    onError(VolleyError("Error parsing JSON response", e))
+                }
+            },
+            {
+                // Log para errores de la solicitud
+                Log.e("AddPrizeError", "Error in request: ${it.message}")
+                onError(it)
+            }))
+    }
+
 }

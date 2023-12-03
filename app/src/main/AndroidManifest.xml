@@ -29,6 +29,11 @@
             android:name=".VinilosActivity"
             android:exported="false" />
         <activity
+            android:name=".VinilosAddActivity"
+            android:label="Agregar Vinilos">
+        </activity>
+        <activity android:name=".PrizesAddActivity" />
+        <activity
             android:name=".ListMusicians"
             android:exported="false" />
         <activity

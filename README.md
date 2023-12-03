@@ -37,6 +37,7 @@ cd ingenieria-de-software-para-aplicaciones-moviles-MISW4203-2023-15-proyecto
 
 - [APK primer sprint](https://github.com/VCastanedap/ingenieria-de-software-para-aplicaciones-moviles-MISW4203-2023-15-proyecto/actions/runs/6766657620)
 - [APK avance del segundo sprint](https://github.com/VCastanedap/ingenieria-de-software-para-aplicaciones-moviles-MISW4203-2023-15-proyecto/actions/runs/6845799822)
+- [APK segundo sprint](https://github.com/VCastanedap/ingenieria-de-software-para-aplicaciones-moviles-MISW4203-2023-15-proyecto/blob/main/app/build/outputs/apk/debug/app-debug.apk)
 
 ## Notas sobre el Back que desplegamos
 
@@ -58,4 +59,14 @@ Header que se debe poner en las peticiones
 
 > Nota: YXBwdXNlcjpxdWVwYXNzd29yZHRhbnNlZ3VyYQ== es la codificación Base64 de appuser:quepasswordtansegura
 
-> UPDATE: 2023-11-07 Se retira la Basic Authorization de Nginx para facilitar los llamados al API. 
+> UPDATE: 2023-11-07 Se retira la Basic Authorization de Nginx para facilitar los llamados al API.
+
+### Microoptimizaciones
+ - se realizo Coroutines y viewModelScope: Cambiamos la ejecución de operaciones en segundo plano a través de coroutines y utilizamos viewModelScope para gestionar automáticamente el ciclo de vida de las coroutines en los ViewModels. Esto ayuda a 
+   evitar posibles fugas de memoria y a garantizar que las coroutines se cancelen cuando el ViewModel se borra.
+ - Uso de withContext: Utilizamos withContext(Dispatchers.Main) en las funciones de ViewModel para asegurarnos de que las actualizaciones de la interfaz de usuario se realicen en el hilo principal
+ - Manejo de errores en las operaciones asíncronas: Implementamos un manejo más robusto de errores, capturando posibles excepciones y manejando errores específicos, como los de Volley. Además, agregamos logs para ayudar en la depuración.
+ - Optimización de la red: En el NetworkServiceAdapter, hicimos ajustes para mejorar la legibilidad y mantenibilidad del código, como el uso de constantes para la URL base y el manejo de respuestas JSON de manera más clara en Album para que este 
+   llamado sea asincrono en un segundo hilo.
+
+

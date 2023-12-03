@@ -1,5 +1,6 @@
 package com.appbajopruebas.vinilos.database
 
+
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -17,6 +18,9 @@ interface CollectorsDao {
 
     @Query("SELECT * FROM collectors_table WHERE id = :collectorId")
     fun getCollectorById(collectorId: Int): Collector?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(collector: Collector)
 
 
 

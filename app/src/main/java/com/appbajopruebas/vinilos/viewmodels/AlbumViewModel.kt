@@ -12,22 +12,25 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import com.android.volley.VolleyError
 import com.appbajopruebas.vinilos.database.AlbumsDao
 import com.appbajopruebas.vinilos.models.Album
-import com.appbajopruebas.vinilos.models.Collector
-import com.appbajopruebas.vinilos.network.NetworkServiceAdapter
 import com.appbajopruebas.vinilos.repositories.AlbumRepository
-import com.appbajopruebas.vinilos.repositories.CollectorsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class AlbumViewModel(application: Application, albumsDao: AlbumsDao) : AndroidViewModel(application) {
+
+
 
     private val _albums = MutableLiveData<List<Album>>()
     private val _albumRepository = AlbumRepository(application, albumsDao)
 
     val albums: LiveData<List<Album>>
         get() = _albums
+
+    private val _eventAlbumCreated = MutableLiveData<Boolean>(false)
+
+    val eventAlbumCreated: LiveData<Boolean>
+        get() = _eventAlbumCreated
 
     private val _eventNetworkError = MutableLiveData<Boolean>(false)
     val eventNetworkError: LiveData<Boolean>
@@ -54,14 +57,13 @@ class AlbumViewModel(application: Application, albumsDao: AlbumsDao) : AndroidVi
                         _eventNetworkError.value = false
                         _isNetworkErrorShown.value = false
                     }
-                },
-                onError = { error ->
-                    // Actualizar LiveData en el hilo principal
-                    viewModelScope.launch(Dispatchers.Main) {
-                        _eventNetworkError.value = true
-                    }
                 }
-            )
+            ) { error ->
+                // Actualizar LiveData en el hilo principal
+                viewModelScope.launch(Dispatchers.Main) {
+                    _eventNetworkError.value = true
+                }
+            }
         } catch (error: VolleyError) {
             // Actualizar LiveData en el hilo principal
             viewModelScope.launch(Dispatchers.Main) {
@@ -70,6 +72,28 @@ class AlbumViewModel(application: Application, albumsDao: AlbumsDao) : AndroidVi
         }
     }
 
+
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String>
+        get() = _errorMessage
+    fun addAlbum(name: String, cover: String, releaseDate: String, description: String, genre: String, recordLabel: String) {
+        viewModelScope.launch {
+            try {
+                val success: Album? = _albumRepository.addAlbum(name, cover, releaseDate, description, genre, recordLabel)
+
+                if (success is Album) {
+                    _eventNetworkError.value = false
+                    _isNetworkErrorShown.value = false
+                } else {
+                    _eventNetworkError.value = true
+                    _errorMessage.value = "Hubo un error 400 al agregar el álbum. Por favor, inténtalo de nuevo."
+                }
+            } catch (error: VolleyError) {
+                _eventNetworkError.value = true
+                _errorMessage.value = "Error de red. Por favor, verifica tu conexión a internet e inténtalo de nuevo."
+            }
+        }
+    }
 
 
     fun onNetworkErrorShown() {
