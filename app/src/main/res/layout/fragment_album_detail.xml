@@ -124,7 +124,8 @@
                 android:id="@+id/detailAlbumImageView"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="Cover del álbum" />
 
             <!-- Descripción del álbum -->
             <TextView
